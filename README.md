@@ -18,12 +18,33 @@
     3. Builder constructor
         1. It simulates named optional parameters as found in Ada and Python.
         2. It is a good choice when designing classes whose constructors or static factories would have more than a handful of parameters, especially if most of those parameters are optional.
-           
-    
-    
-    
-    
-    
-    
-    
+3. Enforce the singleton property with a private constructor or an enum type
+4. Enforce noninstantiability with a private constructor
+5. Avoid creating unnecessary objects
+    1. Prefer primitives to boxed primitives, and watch out for unintentional autoboxing. (int better than Integer)
+6. Eliminate obsolete object references
+    1. Whenever a class manages its own memory, the programmer should be alert for memory leaks.
+    2. Another common source of memory leaks is caches. (Use WeakHashMap)
+    3. A third common source of memory leaks is listeners and other callbacks. (Handler.removeCallbacksAndMessages(null);)
+7. Avoid finalizers
+    1. Finalizers are unpredictable, often dangerous, and generally unnecessary.
+        1. There is no guarantee finalizers will be executed promptly
+            Never do anything time-critical in a finalizer.
+        2. Also, it provides no guarantee that finalizers will get executed at all.
+            Never depend on a finalizer to update critical persistent state.
+        3. If an uncaught exception is thrown during finalization: 
+            1. The exception is ignored
+            2. Finalization of that object terminates 
+            3. It won't even print a warning
+        4. There is a severe performance penalty for using finalizers.
+    2. Solution:
+        1. Provide an explicit termination method
+        2. Require clients of the class to invoke this method on each instance when it is no longer needed
+        3. The instance must keep track of whether it has been terminated
+    3. Examples: FileInputStream, FileOutputStream, Timer, and Connection
+
+
+
+
+
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 

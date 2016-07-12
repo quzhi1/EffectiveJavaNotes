@@ -3,7 +3,7 @@ package item2;
 /**
  * Created by zhiqu on 7/12/16.
  */
-public class NutritionFactsConstructor {
+public class Item2Main {
 
     public static void main(String[] args) {
         // Telescoping
