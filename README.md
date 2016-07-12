@@ -9,6 +9,7 @@
     2. Disadvantages:
         1. The main disadvantage of providing only static factory methods is that classes without public or protected constructors cannot be subclassed.
         2. A second disadvantage of static factory methods is that they are not readily distinguishable from other static methods.
+        ![](http://gifsec.com/wp-content/uploads/GIF/2015/10/Panda-factory-GIF.gif)
 3. Consider a builder when faced with many constructor parameters
     1. Telescoping constructor
         1. It is hard to write client code when there are many parameters, and harder still to read it.
