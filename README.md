@@ -1,7 +1,6 @@
-# EffectiveJavaNotes
+# Effective Java Notes
 
-## Chapter 1: Object
-
+## Creating and Destroying Objects
 
 1. Consider static factory methods instead of constructors
     1. Advantages: 
@@ -68,7 +67,18 @@
     ![](src/main/resources/images/Finalizer.jpg)
     <br />
 
-
-
+## Methods Common to All Objects
+   
+1. Obey the general contract when overriding "equals"
+    Only overiding "equals" when it is a "value class"
+    1. Avoid overiding "equals" when:
+        1. Each instance of the class is inherently unique
+        2. You don't care whether the class provides a "logical equality" test.
+        3. A superclass has already overridden equals, and the superclass behavior is appropriate for this class.
+        4. The class is private or package-private, and you are certain that its equals method will never be invoked.
+    2. Obey mathematical equivalency:
+        1. Reflexivity: a=1
+        2. Symmetry: a=b => b=a
+        3. Transitivity: a=b, b=c => a=c
 
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 
