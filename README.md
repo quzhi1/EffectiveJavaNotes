@@ -1,6 +1,6 @@
 # Effective Java Notes
 
-## Creating and Destroying Objects
+**Creating and Destroying Objects**
 
 1. Consider static factory methods instead of constructors
     1. Advantages: 
@@ -67,9 +67,9 @@
     ![](src/main/resources/images/Finalizer.jpg)
     <br />
 
-## Methods Common to All Objects
+**Methods Common to All Objects**
    
-1. Obey the general contract when overriding "equals"
+8. Obey the general contract when overriding "equals"
     Only overiding "equals" when it is a "value class"
     1. Avoid overiding "equals" when:
         1. Each instance of the class is inherently unique
@@ -80,5 +80,24 @@
         1. Reflexivity: a=1
         2. Symmetry: a=b => b=a
         3. Transitivity: a=b, b=c => a=c
+        4. Consistency: a=b forever
+        5. Non-nullity: a!=null (No object should equal to null)
+    3. There is no way to extend an instantiable class and add a value component while preserving the equals contract.
+        1. Timestamp extends Date. It's a bad implementation. Don't use them together.
+        2. you can add a value component to a subclass of an abstract class without violating the equals contract.
+    4. The Liskov substitution principle says that any important property of a type should also hold for its subtypes, so that any method written for the type should work equally well on its subtypes
+    5. A good equals method should:
+        1. Use the = = operator to check if the argument is a reference to this object.
+        2. Use the instanceof operator to check if the argument has the correct type.
+        3. Cast the argument to the correct type.
+        4. For each "significant" field in the class, check if that field of the argument matches the corresponding field of this object.
+        5. When you are finished writing your equals method, ask yourself three questions: Is it symmetric? Is it transitive? Is it consistent? (Write unit test for them)
+        6. Always override hashCode when you override equals
+    <br />
+    ![](src/main/resources/images/contract.jpg)
+    <br />
+9. Always override hashCode when you override equals
+   
+       
 
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 
