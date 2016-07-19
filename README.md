@@ -97,7 +97,27 @@
     ![](src/main/resources/images/contract.jpg)
     <br />
 9. Always override hashCode when you override equals
-   
-       
-
+    1. Equal objects must have equal hash codes. (Inequal object can have equal hash codes)
+    2. How to compute hash code:
+        1. Store some constant nonzero value, say, 17, in an int variable called result. 
+        2. For each significant field f in your object (each field taken into account by the equals method, that is), do the following: 
+            1. Compute an int hash code c for the field: 
+                1. If the field is a boolean, compute (f ? 1 : 0). 
+                2. If the field is a byte, char, short, or int, compute (int) f. 
+                3. If the field is a long, compute (int) (f ^ (f > > > 32)). 
+                4. If the field is a float, compute Float.floatToIntBits( f). 
+                5. If the field is a double, compute Double.doubleToLongBits( f), and then hash the resulting long as in step 2. a.iii. 
+                6. If the field is an object reference and this class's equals method compares the field by recursively invoking equals, recursively invoke hashCode on the field. If a more complex comparison is required, compute a "canonical representation" for this field and invoke hashCode on the canonical representation. If the value of the field is null, return 0 (or some other constant, but 0 is traditional). 
+                7. If the field is an array, treat it as if each element were a separate field. That is, compute a hash code for each significant element by applying these rules recursively, and combine these values per step 2. b. If every element in an array field is significant, you can use one of the Arrays.hashCode methods added in release 1.5. 
+            2. Combine the hash code c computed in step 2. a into result as follows: 
+                result = 31 * result + c; 
+        3. Return result.
+        4. When you are finished writing the hashCode method, ask yourself whether equal instances have equal hash codes. Write unit tests to verify your intuition! If equal instances have unequal hash codes, figure out why and fix the problem.
+    3. If the object is immutable, use lazy initialization.
+    <br />
+    ![](src/main/resources/images/fist.png)
+    <br />
+10. Always override toString
+    
+    
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 

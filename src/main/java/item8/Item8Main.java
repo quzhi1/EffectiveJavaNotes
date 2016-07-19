@@ -1,24 +1,11 @@
 package item8;
 
 import java.awt.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by zhiqu on 7/12/16.
  */
 public class Item8Main {
-
-    // Initialize UnitCircle to contain all Points on the unit circle
-    private static final Set<Point> unitCircle;
-
-    static {
-        unitCircle = new HashSet<Point>();
-        unitCircle.add(new Point(1, 0));
-        unitCircle.add(new Point(0, 1));
-        unitCircle.add(new Point(-1, 0));
-        unitCircle.add(new Point(0, -1));
-    }
 
     public static void main(String[] args) {
         System.out.println("************ Point ************");
