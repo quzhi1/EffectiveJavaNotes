@@ -122,6 +122,21 @@
     <br />
     
 10. Always override toString
+    <br />
+    ![](src/main/resources/images/batman.jpg)
+    <br />
+    
+11. Override clone judiciously
+    1. In practice, a class that implements Cloneable is expected to provide a properly functioning public clone method.
+    2. In effect, the clone method functions as another constructor; you must ensure that it does no harm to the original object and that it properly establishes invariants on the clone.
+    3. Don't provide clone() to immutable object
+    4. A fine approach to object copying is to provide a copy constructor or copy factory. (It's just better than clone())
+    <br />
+    ![](src/main/resources/images/clones_chick.jpg)
+    <br />
+       
+
+
     
     
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 
