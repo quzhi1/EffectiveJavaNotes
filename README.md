@@ -134,9 +134,31 @@
     <br />
     ![](src/main/resources/images/clones_chick.jpg)
     <br />
-       
 
+12. Consider implementing Comparable
+    1. The implementor must ensure sgn( x.compareTo( y)) == -sgn( y.compareTo( x)) for all x and y. (This implies that x.compareTo( y) must throw an exception if and only if y.compareTo( x) throws an exception.)
+    2. The implementor must also ensure that the relation is transitive: (x.compareTo( y) > 0 && y.compareTo( z) > 0) implies x.compareTo( z) > 0.
+    3. Finally, the implementor must ensure that x.compareTo( y) == 0 implies that sgn( x.compareTo( z)) == sgn( y.compareTo( z)), for all z.
+    4. It is strongly recommended, but not strictly required, that (x.compareTo( y) == 0) == (x.equals( y)).
+    5. When return a - b, be aware of integer overflow. 
+\*sgn( expression) designates the mathematical signum function, which is defined to return -1, 0, or 1, according to whether the value of expression is negative, zero, or positive.
+    <br />
+    ![](src/main/resources/images/apple_pear.png)
+    <br />
 
+13. Minimize the accessibility of classes and members
+    Instance fields should never be public. (Otherwise, it will not be thread safe)
+     <br />
+     ![](src/main/resources/images/encapsulation.png)
+     <br />  
+    
+14. In public classes, use accessor methods, not public fields
+    
+15. Minimize mutability
+    1. Don't provide any methods that modify the object's state (No "set" method)
+    2. Ensure that the class can't be extended. (final class Blabla)
+    3. Make all fields final.
+    4. Ensure exclusive access to any mutable components. (No one can access the reference of my mutable field)
     
     
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 
