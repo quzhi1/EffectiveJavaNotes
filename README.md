@@ -9,9 +9,8 @@
     2. Disadvantages:
         1. The main disadvantage of providing only static factory methods is that classes without public or protected constructors cannot be subclassed.
         2. A second disadvantage of static factory methods is that they are not readily distinguishable from other static methods.
-    <br />
+    
     ![](src/main/resources/images/Panda-factory-GIF.gif)
-    <br />
     
 2. Consider a builder when faced with many constructor parameters
     1. Telescoping constructor
@@ -22,34 +21,30 @@
     3. Builder constructor
         1. It simulates named optional parameters as found in Ada and Python.
         2. It is a good choice when designing classes whose constructors or static factories would have more than a handful of parameters, especially if most of those parameters are optional.
-    <br />
+    
     ![](src/main/resources/images/SCExplode.gif)
-    <br />
     
 3. Enforce the singleton property with a private constructor or an enum type
-    <br />
+    
     ![](src/main/resources/images/nyan_cat.gif)
-    <br />
     
 4. Enforce noninstantiability with a private constructor
-    <br />
+    
     ![](src/main/resources/images/Public-Private.jpg)
-    <br />
     
 5. Avoid creating unnecessary objects
     1. Prefer primitives to boxed primitives. (int better than Integer)
     2. Watch out for unintentional autoboxing. 
-    <br />
+    
     ![](src/main/resources/images/gummy_bears.jpg)
-    <br />
     
 6. Eliminate obsolete object references
     1. Whenever a class manages its own memory, the programmer should be alert for memory leaks.
     2. Another common source of memory leaks is caches. (Use WeakHashMap)
     3. A third common source of memory leaks is listeners and other callbacks. (Handler.removeCallbacksAndMessages(null);)
-    <br />
+    
     ![](src/main/resources/images/boba_fett.jpg)
-    <br />
+    
     
 7. Avoid finalizers
     1. Finalizers are unpredictable, often dangerous, and generally unnecessary.
@@ -67,9 +62,9 @@
         2. Require clients of the class to invoke this method on each instance when it is no longer needed
         3. The instance must keep track of whether it has been terminated
     3. Examples: FileInputStream, FileOutputStream, Timer, and Connection
-    <br />
+    
     ![](src/main/resources/images/Finalizer.jpg)
-    <br />
+    
    
 8. Obey the general contract when overriding "equals"
     Only overiding "equals" when it is a "value class"
@@ -95,9 +90,8 @@
         4. For each "significant" field in the class, check if that field of the argument matches the corresponding field of this object.
         5. When you are finished writing your equals method, ask yourself three questions: Is it symmetric? Is it transitive? Is it consistent? (Write unit test for them)
         6. Always override hashCode when you override equals
-    <br />
+    
     ![](src/main/resources/images/contract.jpg)
-    <br />
     
 9. Always override hashCode when you override equals
     1. Equal objects must have equal hash codes. (Inequal object can have equal hash codes)
@@ -117,23 +111,20 @@
         3. Return result.
         4. When you are finished writing the hashCode method, ask yourself whether equal instances have equal hash codes. Write unit tests to verify your intuition! If equal instances have unequal hash codes, figure out why and fix the problem.
     3. If the object is immutable, use lazy initialization.
-    <br />
+    
     ![](src/main/resources/images/fist.png)
-    <br />
     
 10. Always override toString
-    <br />
+    
     ![](src/main/resources/images/batman.jpg)
-    <br />
     
 11. Override clone judiciously
     1. In practice, a class that implements Cloneable is expected to provide a properly functioning public clone method.
     2. In effect, the clone method functions as another constructor; you must ensure that it does no harm to the original object and that it properly establishes invariants on the clone.
     3. Don't provide clone() to immutable object
     4. A fine approach to object copying is to provide a copy constructor or copy factory. (It's just better than clone())
-    <br />
+
     ![](src/main/resources/images/clones_chick.jpg)
-    <br />
 
 12. Consider implementing Comparable
     1. The implementor must ensure sgn( x.compareTo( y)) == -sgn( y.compareTo( x)) for all x and y. (This implies that x.compareTo( y) must throw an exception if and only if y.compareTo( x) throws an exception.)
@@ -142,17 +133,17 @@
     4. It is strongly recommended, but not strictly required, that (x.compareTo( y) == 0) == (x.equals( y)).
     5. When return a - b, be aware of integer overflow. 
 \*sgn( expression) designates the mathematical signum function, which is defined to return -1, 0, or 1, according to whether the value of expression is negative, zero, or positive.
-    <br />
+
     ![](src/main/resources/images/apple_pear.png)
-    <br />
 
 13. Minimize the accessibility of classes and members
     Instance fields should never be public. (Otherwise, it will not be thread safe)
-     <br />
-     ![](src/main/resources/images/encapsulation.png)
-     <br />  
+
+    ![](src/main/resources/images/encapsulation.png)
     
 14. In public classes, use accessor methods, not public fields
+
+    ![](src/main/resources/images/java-bean.jpg)
     
 15. Minimize mutability
     1. Don't provide any methods that modify the object's state (No "set" method)
@@ -160,5 +151,38 @@
     3. Make all fields final.
     4. Ensure exclusive access to any mutable components. (No one can access the reference of my mutable field)
     
+    ![](src/main/resources/images/GOD_is_immutable.jpg)
     
+    
+16. Favor composition over inheritance
+
+    ![](src/main/resources/images/yoda.jpg)
+    
+17. Design and document for inheritance or else prohibit it
+
+    If you want to enable inheritance:
+    
+    1. The class must document its self-use of overridable methods. ("This implementation ...")
+    2. The only way to test a class designed for inheritance is to write subclasses.
+    3. Constructors **must not** invoke overridable methods,
+    4. Don't implement "Cloneable" and "Serializable". If you must, neither "clone" nor "readObject" may invoke an overridable method, directly or indirectly.
+
+    ![](src/main/resources/images/inheritance_tax.jpg)
+
+18. Prefer interfaces to abstract classes
+    
+    Benefits of interface
+    
+    1. Existing classes can be easily retrofitted to implement a new interface.
+    2. Interfaces are ideal for defining mixins.
+    3. Interfaces allow the construction of nonhierarchical type frameworks.
+    4. Interfaces enable safe, powerful functionality enhancements via the wrapper class idiom. (**"Abstract Interface"**, or **Skeletal Implementation**)
+    
+    Benefits of abstract class:
+    1. It is far easier to evolve an abstract class than an interface. (You can add new methods any time)
+    2. Once an interface is released and widely implemented, it is almost impossible to change.
+
+    ![](src/main/resources/images/abstract_class_interfaces.png)
+
+
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 
