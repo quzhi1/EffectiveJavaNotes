@@ -1,5 +1,11 @@
 # Effective Java Notes
 
+Progress: 
+
+![](http://progressed.io/bar/23)
+
+================== Creating and Destroying Objects ==================
+
 1. Consider static factory methods instead of constructors
     1. Advantages: 
         1. One advantage of static factory methods is that, unlike constructors, they have names.
@@ -42,10 +48,9 @@
     1. Whenever a class manages its own memory, the programmer should be alert for memory leaks.
     2. Another common source of memory leaks is caches. (Use WeakHashMap)
     3. A third common source of memory leaks is listeners and other callbacks. (Handler.removeCallbacksAndMessages(null);)
-    
+
     ![](src/main/resources/images/boba_fett.jpg)
-    
-    
+
 7. Avoid finalizers
     1. Finalizers are unpredictable, often dangerous, and generally unnecessary.
         1. There is no guarantee finalizers will be executed promptly
@@ -64,8 +69,9 @@
     3. Examples: FileInputStream, FileOutputStream, Timer, and Connection
     
     ![](src/main/resources/images/Finalizer.jpg)
-    
-   
+
+================== Methods Common to All Objects ==================
+
 8. Obey the general contract when overriding "equals"
     Only overiding "equals" when it is a "value class"
     1. Avoid overiding "equals" when:
@@ -136,6 +142,8 @@
 
     ![](src/main/resources/images/apple_pear.png)
 
+================== Classes and Interfaces ========================
+
 13. Minimize the accessibility of classes and members
     Instance fields should never be public. (Otherwise, it will not be thread safe)
 
@@ -184,5 +192,56 @@
 
     ![](src/main/resources/images/abstract_class_interfaces.png)
 
+19. Use interfaces only to define types
+
+    1. Don't do constant interface. Use util class.
+    2. If you use a util class too often, make static import.
+    
+    ![](src/main/resources/images/PbjcptO.gif)
+        
+20. Prefer class hierarchies to tagged classes
+
+    Tagged classes are verbose, error-prone, and inefficient.
+    
+    ![](src/main/resources/images/no-tags.png)
+        
+21. Use function objects to represent strategies
+
+    (Best example: Comparator<T>)
+
+    ![](src/main/resources/images/function-object.jpg)
+
+22. Favor static member classes over nonstatic
+
+    There are four kinds of nested classes: 
+    
+    1. Static member class (e.g. Calculator.Operation.PLUS)
+    2. Nonstatic member class (e.g. Map.Entry)
+    3. Anonymous class (e.g. new Comparator<String> {...})
+    4. Local class (just like a local variable)
+    
+    If you declare a member class that does not require access to an enclosing instance, always put the static modifier in its declaration
+    
+    ![](src/main/resources/images/Types-of-Nested-Classes.png)
+    
+================== Generics ========================
+
+| Term                    	| Example                         	|     Item     	|
+|-------------------------	|---------------------------------	|:------------:	|
+| Parameterized type      	| List<String>                    	| Item 23      	|
+| Actual type parameter   	| String                          	| Item 23      	|
+| Generic type            	| List<E>                         	| Items 23, 26 	|
+| Formal type parameter   	| E                               	| Item 23      	|
+| Unbounded wildcard type 	| List<?>                         	| Item 23      	|
+| Raw type                	| List                            	| Item 23      	|
+| Bounded type parameter  	| <E extends Number>              	| Item 26      	|
+| Recursive type bound    	| <T extends Comparable<T>>       	| Item 27      	|
+| Bounded wildcard type   	| List<? extends Number>          	| Item 28      	|
+| Generic method          	| static<E> List<E> asList(E[] a) 	| Item 27      	|
+| Type token              	| String.class                    	| Item 29      	|
+    
+23. Don’t use raw types in new code
+
+    
 
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 
