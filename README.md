@@ -2,9 +2,9 @@
 
 Progress: 
 
-![](http://progressed.io/bar/23)
+![](http://progressed.io/bar/33)
 
-# Creating and Destroying Objects
+## Creating and Destroying Objects
 
 ### 1. Consider static factory methods instead of constructors
 
