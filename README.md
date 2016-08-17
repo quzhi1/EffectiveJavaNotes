@@ -226,19 +226,19 @@ Progress:
     
 ================== Generics ========================
 
-| Term                    	| Example                         	|     Item     	|
-|-------------------------	|---------------------------------	|:------------:	|
-| Parameterized type      	| List<String>                    	| Item 23      	|
-| Actual type parameter   	| String                          	| Item 23      	|
-| Generic type            	| List<E>                         	| Items 23, 26 	|
-| Formal type parameter   	| E                               	| Item 23      	|
-| Unbounded wildcard type 	| List<?>                         	| Item 23      	|
-| Raw type                	| List                            	| Item 23      	|
-| Bounded type parameter  	| <E extends Number>              	| Item 26      	|
-| Recursive type bound    	| <T extends Comparable<T>>       	| Item 27      	|
-| Bounded wildcard type   	| List<? extends Number>          	| Item 28      	|
-| Generic method          	| static<E> List<E> asList(E[] a) 	| Item 27      	|
-| Type token              	| String.class                    	| Item 29      	|
+| Term                    	| Example                             	|     Item     	|
+|-------------------------	|-------------------------------------	|:------------:	|
+| Parameterized type      	| List\<String\>                      	| Item 23      	|
+| Actual type parameter   	| String                              	| Item 23      	|
+| Generic type            	| List\<E\>                           	| Items 23, 26 	|
+| Formal type parameter   	| E                                   	| Item 23      	|
+| Unbounded wildcard type 	| List\<?\>                           	| Item 23      	|
+| Raw type                	| List                                	| Item 23      	|
+| Bounded type parameter  	| \<E extends Number\>                	| Item 26      	|
+| Recursive type bound    	| \<T extends Comparable\<T\>\>       	| Item 27      	|
+| Bounded wildcard type   	| List\<? extends Number\>            	| Item 28      	|
+| Generic method          	| static\<E\> List\<E\> asList(E[] a) 	| Item 27      	|
+| Type token              	| String.class                        	| Item 29      	|
     
 23. Don’t use raw types in new code
 
