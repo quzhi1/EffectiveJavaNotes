@@ -261,6 +261,32 @@ If you declare a member class that does not require access to an enclosing insta
     
 ### 23. Don’t use raw types in new code
 
-    
+List            ->      List<E>
+Collection      ->      Collection<E>
+Iterator        ->      Iterator<E>
+
+If you use raw types, you lose all the safety and expressiveness benefits of generics. 
+
+![](src/main/resources/images/Cup-T.jpg)
+
+### 24. Eliminate unchecked warnings
+
+If you must write that way, add **@SuppressWarnings("unchecked")** and a **comment**
+
+![](src/main/resources/images/warning.jpg)
+
+### 25. Prefer lists to arrays
+
+This will make type check easy
+
+![](src/main/resources/images/Generic-Inheritance.jpg)
+
+### 26. Favor generic types
+
+Stack   ->  Stack<E>
+
+![](src/main/resources/images/Real-Generics.jpg)
+
+
 
 *Acknoledgement: Bloch, Joshua (2008-05-08). Effective Java (Java Series). Pearson Education. Kindle Edition.* 
